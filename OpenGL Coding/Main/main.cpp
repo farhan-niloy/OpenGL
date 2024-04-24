@@ -9,7 +9,7 @@ int main() {
     
     // Initialize GLFW
     if (!glfwInit()) {
-        fprintf(stderr, "Failed to initialize GLFW\n");
+        fprintf(stderr, "Failed to initialise GLFW\n");
         return -1;
     }
     
@@ -20,7 +20,7 @@ int main() {
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     
     // Create a windowed mode window and its OpenGL context
-    GLFWwindow* mainWindow = glfwCreateWindow(WIDTH, HEIGHT, "Test Window", NULL, NULL);
+    GLFWwindow *mainWindow = glfwCreateWindow(WIDTH, HEIGHT, "Test Window", NULL, NULL);
     if (!mainWindow) {
         printf("GLFW window creation failed!");
         glfwTerminate();
@@ -36,12 +36,13 @@ int main() {
         printf("GLEW initialisation failed!");
         glfwDestroyWindow(mainWindow);
         glfwTerminate();
-        return 1;
+        return -1;
     }
     
     // Get framebuffer size
     int bufferWidth, bufferHeight;
     glfwGetFramebufferSize(mainWindow, &bufferWidth, &bufferHeight);
+    printf("%d, %d", bufferWidth, bufferHeight);
     
     // Set viewport size
     glViewport(0, 0, bufferWidth, bufferHeight);
